@@ -1,8 +1,14 @@
-import express from "express";
 import "./loadEnviroments.js";
+import express from "express";
 import morgan from "morgan";
+import { thingsRouter } from "./routers/Router.js";
 
-export const port = process.env.PORT ?? 4000;
+const port = process.env.PORT ?? 4000;
+const app = express();
 
-export const app = express();
 app.use(morgan("dev"));
+app.use(express.json());
+
+app.use("/", thingsRouter);
+
+app.listen(port);

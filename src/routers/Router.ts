@@ -1,5 +1,12 @@
 import { Router } from "express";
+import {
+  deleteThing,
+  getThing,
+  getThings,
+} from "../controllers/ThingsControllers.js";
 
-const thingsRouter = Router();
+export const thingsRouter = Router();
 
-thingsRouter.get("/things");
+thingsRouter.get("/things", getThings);
+thingsRouter.get("/things/:id", getThing);
+thingsRouter.delete("/things/:id", deleteThing);
