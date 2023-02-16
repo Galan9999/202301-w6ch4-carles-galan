@@ -1,11 +1,8 @@
 import express from "express";
 import "./loadEnviroments.js";
+import morgan from "morgan";
 
-const port = process.env.PORT ?? 4000;
+export const port = process.env.PORT ?? 4000;
 
-const app = express();
-
-app.get("/", (req, res) => {
-  res.status(200).json({ "hello world": "hola" });
-});
-app.listen(port);
+export const app = express();
+app.use(morgan("dev"));
